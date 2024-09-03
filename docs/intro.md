@@ -2,46 +2,68 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Quickstart guide
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## Installation
 
-## Getting Started
+### Using Docker
 
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```sh
+docker pull ghcr.io/bit-bom/minefield:latest
+docker run -it ghcr.io/bit-bom/minefield:latest
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+### Building from source
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+```sh
+git clone https://github.com/bit-bom/minefield.git
+cd minefield
+go build -o minefield main.go
+./minefield
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+### Using go install
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```sh
+go install github.com/bit-bom/minefield@latest
+minefield
+```
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## To start using Minefield
+
+1. Ingest some data: `minefield ingest sbom <sbom_file or sbom_dir>`  
+2. Cache the data: `minefield cache`
+3. Run a query: `minefield query <query_string>`
+
+### Example
+
+1. Ingest the `test` SBOM directory:
+    ```sh
+    minefield ingest sbom test
+    ```
+2. Cache the data:
+    ```sh
+    minefield cache
+    ```
+3. Run the leaderboard custom with "dependents PACKAGE":
+    - This command generates a ranked list of packages, ordered by the number of other packages that depend on them
+    ```sh
+    minefield leaderboard custom "dependents PACKAGE"
+    ```
+4. Run a query on the top value from the leaderboard:
+    - This command is now querying the dependents for a specific package, in this case dep2
+    ```sh
+    minefield query "dependents PACKAGE pkg:generic/dep2@1.0.0" 
+    ```
+5. Run queries to see the shared dependencies of lib-A and dep1, and lib-A and lib-B
+    - These queries output the intersection of two queries, in this case we are finding package dependencies do each of the packages share between each other.
+    ```sh
+    minefield query "dependencies PACKAGE pkg:generic/dep1@1.0.0 and dependencies PACKAGE pkg:generic/lib-A@1.0.0" 
+    ```
+    ```sh
+    minefield query "dependencies PACKAGE pkg:generic/lib-B@1.0.0 and dependencies PACKAGE pkg:generic/lib-A@1.0.0" 
+    ```
+6. Run queries with the visualizer
+     ```sh
+    minefield query "dependents PACKAGE pkg:generic/dep2@1.0.0 --visualize" 
+    ```

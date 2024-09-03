@@ -10,35 +10,45 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Speed',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Minefield is designed to be fast. It uses a combination of techniques to achieve this, including:
+        <ul>
+          <li>Roaring Bitmaps</li>
+          <li>Dynamic Programming</li>
+        </ul>
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Memory Efficient',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Minefield is designed to be memory efficient. Without bloated edges, Minefield can store all of its relationship data in roaring bitmaps. Minefield graphs with minimal overhead.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Situational Bitwise Queries',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Minefield uses bitwise queries to aggregate queries on SBOMs together, to get complex SBOM diffs, shared elements, and more.
       </>
     ),
   },
+  {
+    title: 'Leaderboards',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        Leaderboards are impossible without caching. This is because leaderboards sort every artifact in the graph by a query, runing thousands if not millions of queries at once, without caching could take literal years.
+      </>
+    ),
+  }
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {

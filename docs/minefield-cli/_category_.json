@@ -1,0 +1,8 @@
+{
+  "label": "Minefield CLI",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Command structure and usage of Minefield"
+  }
+}
