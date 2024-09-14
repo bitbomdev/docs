@@ -3,9 +3,9 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'BitBom',
-  tagline: 'BitBom',
-  favicon: 'img/favicon.ico',
+  title: 'bitbom',
+  tagline: '',
+  favicon: 'img/bitbom-favicon.ico',
 
   // Set the production url of your site here
   url: 'https://bitbom.dev',
@@ -66,10 +66,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Bitbom',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'BitBom Logo',
+        src: 'img/bitbom-long-logo.png',
       },
       items: [
         {
@@ -85,36 +84,32 @@ const config: Config = {
           position: 'right',
         },
       ],
+      // style: 'primary', // Add this line to set the navbar style
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Projects',
           items: [
             {
-              label: 'Docs',
-              to: '/docs/intro',
+              label: 'minefield',
+              href: 'https://github.com/bitbomdev/minefield',
+            },
+            {
+              label: 'bom-silo',
+              href: 'https://github.com/bitbomdev/bom-silo',
+            },
+            {
+              label: 'bomfactory',
+              href: 'https://github.com/bitbomdev/bomfactory',
+            },
+            {
+              label: 'docs',
+              href: 'https://github.com/bitbomdev/docs',
             },
           ],
         },
-        // {
-        //   title: 'Community',
-        //   items: [
-        //     {
-        //       label: 'Stack Overflow',
-        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     },
-        //     {
-        //       label: 'Discord',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //     {
-        //       label: 'Twitter',
-        //       href: 'https://twitter.com/docusaurus',
-        //     },
-        //   ],
-        // },
         {
           title: 'More',
           items: [
@@ -129,7 +124,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} BitBom.dev`,
+      copyright: `Copyright © ${new Date().getFullYear()} bitbom.dev`,
     },
     prism: {
       theme: prismThemes.github,
