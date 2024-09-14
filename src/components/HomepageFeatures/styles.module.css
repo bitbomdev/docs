@@ -9,3 +9,15 @@
   height: 200px;
   width: 200px;
 }
+
+.sectionHeader {
+  font-size: 2rem; /* Increase the font size for section headers */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.featureHeader {
+  font-size: 1.5rem; /* Slightly decrease the font size for feature headers */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
