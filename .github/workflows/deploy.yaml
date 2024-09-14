@@ -4,16 +4,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '**.js'
-      - '**.md'
-      - '**.mdx'
-      - 'docs/**'
-      - 'src/**'
-      - 'docusaurus.config.ts'
-      - 'package.json'
-      - 'package-lock.json'
-
+  
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
