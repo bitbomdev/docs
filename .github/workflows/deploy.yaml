@@ -6,8 +6,6 @@ on:
       - main  # Replace with your default branch if different
     paths:
       - '**.js'
-      - '**.ts'
-      - '**.tsx'
       - '**.md'
       - '**.mdx'
       - 'docs/**'
@@ -46,6 +44,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_SECRET }}
           publish_dir: ./build
-          keep_files: true  # Retain existing files in gh-pages branch
+          keep_files: true
