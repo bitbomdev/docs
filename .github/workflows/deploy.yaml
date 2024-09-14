@@ -3,7 +3,7 @@ name: Deploy Docusaurus site
 on:
   push:
     branches:
-      - main  # Replace with your default branch if different
+      - main
     paths:
       - '**.js'
       - '**.md'
@@ -33,7 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20  # Specify the Node.js version required
+          node-version: 20
 
       - name: Install dependencies
         run: npm ci
