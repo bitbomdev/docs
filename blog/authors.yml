@@ -18,3 +18,10 @@ NaveenSrinivasan:
     x: Naveen_Srini_
     linkedin: naveensrinivasan
     github: naveensrinivasan
+
+BitBom:
+  name: BitBom
+  title: Graphing SBOM's Fast
+  url: https://github.com/bitbom
+  image_url: https://github.com/bitbomdev.png
+  page: true
