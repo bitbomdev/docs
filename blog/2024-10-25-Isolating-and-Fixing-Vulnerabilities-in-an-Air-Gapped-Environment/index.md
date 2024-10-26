@@ -84,26 +84,7 @@ Let's say we have packages `A`, `B`, and `C`.
 
 So, package `A` is the one vulnerable dependency and `Kubernetes` dependency. 
 
-```mermaid
-graph TB;
-    subgraph MainPackage
-        A[Kubernetes]
-    end
-    A --> B[Package A]
-    A --> C[Package C]
-    B --> D[Package B]
-    B --> C
-    B:::vulnerable
-    D:::vulnerable
-
-    classDef vulnerable fill:#f96,stroke:#333,stroke-width:2px;
-
-    %% This diagram shows the relationships:
-    %% - Kubernetes depends on A and C.
-    %% - A depends on B and C.
-    %% - Both A and B are vulnerable.
-
-```
+[![](https://mermaid.ink/img/pako:eNplkk1vwjAMhv-KFcSt3WFIkxakSbS9TUiTxmmUQ2hcEpEmVT7GJsR_XyAFus0n-3ntyHZ8JI3hSCjZWdYLWBXzWkM0F7aJLJnUb6zZsx0m5WyL9WvYotXo0W0SRs2Ts4A8f4FiPRTBYjPm5Y2XAy8uvLrx4hcvh4BS-hmURsu2amik-sMSbRRzrsIW7hK0Uik6aZ-fMuet2SOdzGazwc8PkntBH_uv-fWJ6RRWQjrgksUddOCEOTjwAsGiYl4a7YTsHb1l53BfB3Ds4y4cGB1HZppD-TBKXIz14r9eGC-GuqhaHI3xQDLSoe2Y5PG_jueimsSuOqwJjS7HlgXla1LrU0xlwZv3b90Q6m3AjISeM49VmukKe6Y_jIlhy5SLMXLpjV2mk7hcRkasCTuRCk4_y-GvSw?type=png)](https://mermaid.live/edit#pako:eNplkk1vwjAMhv-KFcSt3WFIkxakSbS9TUiTxmmUQ2hcEpEmVT7GJsR_XyAFus0n-3ntyHZ8JI3hSCjZWdYLWBXzWkM0F7aJLJnUb6zZsx0m5WyL9WvYotXo0W0SRs2Ts4A8f4FiPRTBYjPm5Y2XAy8uvLrx4hcvh4BS-hmURsu2amik-sMSbRRzrsIW7hK0Uik6aZ-fMuet2SOdzGazwc8PkntBH_uv-fWJ6RRWQjrgksUddOCEOTjwAsGiYl4a7YTsHb1l53BfB3Ds4y4cGB1HZppD-TBKXIz14r9eGC-GuqhaHI3xQDLSoe2Y5PG_jueimsSuOqwJjS7HlgXla1LrU0xlwZv3b90Q6m3AjISeM49VmukKe6Y_jIlhy5SLMXLpjV2mk7hcRkasCTuRCk4_y-GvSw)
 
 ```bash
 
