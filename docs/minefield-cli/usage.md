@@ -6,45 +6,46 @@ sidebar_position: 1
 
 ## Query
 
+### Custom Queries
+
 Custom queries allow users to perform complex searches by combining multiple commands. These queries can be used to analyze the relationships between different nodes in the graph.
 
 When running a custom query, there are multiple commands that can be used. For example, the custom command:
 
 ```sh
-minefield query "dependencies library pkg:generic/dep1@1.0.0 and dependencies library pkg:generic/lib-A@1.0.0"
+minefield query custom "dependencies library pkg:generic/dep1@1.0.0 and dependencies library pkg:generic/lib-A@1.0.0"
 ```
-
 
 This custom command uses the commands "dependencies" and "and".
 
-### Available Commands
+#### Available Commands
 
-#### dependencies
+##### dependencies
 - **Description**: Retrieves all dependencies of a specified node.
 - **Usage**: `dependencies <node_type> <node_name>`
 - **Example**: `dependencies library pkg:generic/dep1@1.0.0`
 
-#### dependents
+##### dependents
 - **Description**: Retrieves all dependents of a specified node.
 - **Usage**: `dependents <node_type> <node_name>`
 - **Example**: `dependents library pkg:generic/dep1@1.0.0`
 
-#### and
+##### and
 - **Description**: Combines two queries with a logical AND, returning nodes that satisfy both conditions.
 - **Usage**: `<query1> and <query2>`
 - **Example**: `dependencies library pkg:generic/dep1@1.0.0 and dependencies library pkg:generic/lib-A@1.0.0`
 
-#### or
+##### or
 - **Description**: Combines two queries with a logical OR, returning nodes that satisfy either condition.
 - **Usage**: `<query1> or <query2>`
 - **Example**: `dependencies library pkg:generic/dep1@1.0.0 or dependencies library pkg:generic/lib-A@1.0.0`
 
-#### xor
+##### xor
 - **Description**: Combines two queries with a logical XOR, returning nodes that satisfy one condition but not both.
 - **Usage**: `<query1> xor <query2>`
 - **Example**: `dependencies library pkg:generic/dep1@1.0.0 xor dependencies library pkg:generic/lib-A@1.0.0`
 
-### Examples
+#### Examples
 
 To find the dependencies shared by `dep1` and `lib-A`, you can use the following custom query:
 
@@ -54,15 +55,58 @@ minefield query "dependencies library pkg:generic/dep1@1.0.0 and dependencies li
 
 This query will return all nodes that are dependencies of both `dep1` and `lib-A`.
 
-### Flags
+#### Flags
 
 --visualize : This flag will visualize the query, by creating a graph of the nodes and edges.
 
 --addr : This flag will specify the port that the visualization will be hosted on.
 
---outputdir: This flag will specify the directory that the query will be saved to, the query will be saved as a files in the directory, with the name of each file being the name of the node in that query, the the file wil contain the metadata of the node.
-
 --max-output: This flag will specify the maximum number of nodes that the query will return.
+
+### Output Query
+
+Output is takes in a node name, and will output the metadata of the node to the terminal or to a file if the --outputdir flag is specified.
+
+#### Usage
+
+```sh
+minefield query output <node_name>
+```
+
+#### Examples
+
+To output the metadata of the node `pkg:generic/dep1@1.0.0`, you can use the following command:
+
+```sh
+minefield query output pkg:generic/dep1@1.0.0
+```
+
+This will output the node's name, id, type, and metadata.
+
+
+#### Flags
+--output-file: This flag will specify the file that output will be saved to.
+
+
+### Globsearch 
+
+The globsearch command is used to search for nodes in the graph that match a given pattern. We can run this query without the cache command, without any impact on performance. 
+
+#### Usage
+
+```sh
+minefield query globsearch <pattern>
+```
+
+#### Examples
+
+To search for all the noes for the package `dep` you can run `*dep*` with the following command:
+
+```sh
+minefield query globsearch "*dep*"  
+```
+
+The pattern is a glob pattern, and will match any node that contains the pattern. 
 
 ## Leaderboard 
 
@@ -141,4 +185,26 @@ minefield cache
 
 ```sh
 minefield ingest sbom <sbom_file or directory>
+```
+
+### OSV
+
+#### Load
+
+This command will load the OSV data into a local database without graphing it.
+THe data must be in the OSV JSON schema, but it can be in a directory, a single file, or a zip file.
+
+#### Usage
+
+```sh
+minefield ingest osv load <osv_file or directory>
+```
+#### Graph
+
+This command will load the OSV data into the graph, from the local database.
+
+#### Usage
+
+```sh
+minefield ingest osv graph
 ```
