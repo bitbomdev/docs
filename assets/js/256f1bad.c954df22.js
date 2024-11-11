@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbitbom_docs=self.webpackChunkbitbom_docs||[]).push([[2142],{8130:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"glossary"}')}}]);

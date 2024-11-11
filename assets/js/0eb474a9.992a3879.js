@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbitbom_docs=self.webpackChunkbitbom_docs||[]).push([[8407],{810:e=>{e.exports=JSON.parse('{"tag":{"label":"minefield","permalink":"/docs/tags/minefield","allTagsPath":"/docs/tags","count":1,"items":[{"id":"minefield-paper","title":"Minefield Paper","description":"Abstract","permalink":"/docs/minefield-paper"}],"unlisted":false}}')}}]);

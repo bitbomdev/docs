@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbitbom_docs=self.webpackChunkbitbom_docs||[]).push([[9393],{275:e=>{e.exports=JSON.parse('{"tags":[{"label":"minefield","permalink":"/docs/tags/minefield","count":1}]}')}}]);

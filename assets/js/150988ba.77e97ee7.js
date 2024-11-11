@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbitbom_docs=self.webpackChunkbitbom_docs||[]).push([[2935],{2179:e=>{e.exports=JSON.parse('{"tags":[{"label":"minefield","permalink":"/demos/tags/minefield","count":1},{"label":"starting-up-minefield","permalink":"/demos/tags/starting-up-minefield","count":2},{"label":"scorecard","permalink":"/demos/tags/scorecard","count":1}]}')}}]);

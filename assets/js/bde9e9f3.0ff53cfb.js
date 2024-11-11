@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbitbom_docs=self.webpackChunkbitbom_docs||[]).push([[5736],{8632:(e,s,t)=>{t.r(s),t.d(s,{default:()=>o});t(6540);var c=t(6347),d=t(4848);function o(){return(0,d.jsx)(c.rd,{to:"/docs/design/telemetry"})}}}]);
