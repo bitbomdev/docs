@@ -1,0 +1,332 @@
+---
+title: Integrating OpenSSF Scorecard Data into the Graph
+slug: ingesting-scorecard
+description: 'Learn how to ingest OpenSSF Scorecard data into Minefield'
+authors: [ bitbomdev ]
+tags: [ minefield, starting-up-minefield, scorecard ]
+---
+
+## Prerequisites
+
+- [Docker](https://www.docker.com)
+- [Minefield](./01_startup.mdx#installing-minefield)
+- [Scorecard Downloader](./01_startup.mdx#installing-scorecard-downloader-optional) (optional if you have your own Scorecard data)
+
+This documentation provides a guide on how to graph OpenSSF Scorecard data in Minefield via a fully air-gapped process. It includes instructions on using the Scorecard-downloader to fetch data and the steps involved in loading and graphing the data within the system.
+
+## Overview
+
+[OpenSSF Scorecard](https://github.com/ossf/scorecard) is a tool that provides data for projects so that it is easier to understand the security posture of the project.
+
+## Air-Gapped Environment
+
+To maintain a secure and isolated environment, our project operates in a fully air-gapped manner. This means that all external data must be brought into the system without direct internet access during processing.
+
+We use the [Scorecard Downloader](https://github.com/bitbomdev/scorecard-downloader) to fetch the Scorecard data separately. This tool allows us to download the necessary Scorecard JSON files in advance, which can then be transferred into the air-gapped system for processing.
+
+## Using the Scorecard Downloader
+
+To download Scorecard data, follow these steps:
+
+1. **Install the Scorecard Downloader**: Use the following command to install the Scorecard Downloader tool.
+
+    ```bash
+    go install github.com/bitbomdev/scorecard-downloader@latest
+    ```
+
+2. **Download Scorecard Data**: Use the Scorecard Downloader to fetch data for specific packages. Replace the PURL and output file name as needed.
+
+    ```bash
+    scorecard-downloader --purls pkg:golang/github.com/stretchr/testify@v1.9.0 --purls pkg:golang/github.com/chromedp/chromedp@v0.10.0 --output=scorecard_data.json
+    ```
+
+    The output should loook similar to:
+
+    ```
+    Date, Input PURLs: [pkg:golang/github.com/stretchr/testify@v1.9.0 pkg:golang/github.com/chromedp/chromedp@v0.10.0] 
+    Results saved to scorecard_data.json
+    ```
+    
+    Now we have some scorecard data to graph.
+
+## Process Overview
+
+The integration of Scorecard data into the graph involves several steps:
+
+![Process Overview](/img/demos/ingesting-scorecard/process-overview.png)
+
+## Steps in Detail
+
+### 1. Load SBOM Data into the Storage
+
+First load some SBOM data into the graph, we can use some test data:
+
+```bash
+go run main.go ingest sbom testdata/sboms
+```
+
+### 2. Load Scorecard Data into the Storage
+
+Then, load the Scorecard data into our storage system using the `load` command. This command processes the JSON files and stores the data for later use.
+
+```bash
+go run main.go ingest scorecard load scorecard_data.json
+```
+
+### 3. Graph the Scorecard Data
+
+Next, graph the Scorecard data using the `graph` command. This step integrates the Scorecard data into the graph, establishing relationships between the Scorecard nodes and existing library nodes.
+
+```bash
+go run main.go ingest scorecard graph
+```
+
+### 4. Cache the Graph
+
+After graphing the data, cache the graph to optimize performance for queries and analyses.
+
+```bash
+go run main.go cache
+```
+
+### 5. Utilize the Scorecard Data
+
+With the Scorecard data integrated into the graph, perform queries to extract valuable security insights.
+
+#### Generate a Leaderboard Based on Scorecard Data:
+
+If we want to find all nodes that have a scorecard as their dependency, we can create a leaderboard of the nodes based on the number of dependencies of type scorecard:
+
+```bash
+go run main.go leaderboard custom "dependencies scorecard"
+```
+
+you should get something similar to:
+
+```
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+|                                  NAME                                  |   TYPE    |  ID  | OUTPUT |           INFO           |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:github.com/google/chrome-ssh-agent@                                | library   | 1426 |      1 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:golang/github.com/chromedp/chromedp@v0.10.0                        | library   | 1444 |      1 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:github.com/GoogleCloudPlatform/terraform-google-conversion@        | library   |   59 |      1 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| scorecard:pkg:golang/github.com/stretchr/testify@v1.9.0                | scorecard | 1601 |      1 | Score: 5.90              |
+|                                                                        |           |      |        | Checks:                  |
+|                                                                        |           |      |        | - Maintained: 10         |
+|                                                                        |           |      |        | - Code-Review: 10        |
+|                                                                        |           |      |        | - CII-Best-Practices: 0  |
+|                                                                        |           |      |        | - License: 10            |
+|                                                                        |           |      |        | - Signed-Releases: -1    |
+|                                                                        |           |      |        | - Branch-Protection: -1  |
+|                                                                        |           |      |        | - Packaging: -1          |
+|                                                                        |           |      |        | - Dangerous-Workflow: 10 |
+|                                                                        |           |      |        | - Binary-Artifacts: 10   |
+|                                                                        |           |      |        | - Token-Permissions: 0   |
+|                                                                        |           |      |        | - Pinned-Dependencies: 0 |
+|                                                                        |           |      |        | - Security-Policy: 0     |
+|                                                                        |           |      |        | - Fuzzing: 0             |
+|                                                                        |           |      |        | - SAST: 0                |
+|                                                                        |           |      |        | - Vulnerabilities: 10    |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:github.com/google/cadvisor@                                        | library   |  253 |      1 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:golang/github.com/stretchr/testify@v1.9.0                          | library   |  130 |      1 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| scorecard:pkg:golang/github.com/chromedp/chromedp@v0.10.0              | scorecard | 1602 |      1 | Score: 4.20              |
+|                                                                        |           |      |        | Checks:                  |
+|                                                                        |           |      |        | - Code-Review: 4         |
+|                                                                        |           |      |        | - Maintained: 4          |
+|                                                                        |           |      |        | - CII-Best-Practices: 0  |
+|                                                                        |           |      |        | - License: 10            |
+|                                                                        |           |      |        | - Signed-Releases: -1    |
+|                                                                        |           |      |        | - Dangerous-Workflow: 10 |
+|                                                                        |           |      |        | - Token-Permissions: 0   |
+|                                                                        |           |      |        | - Branch-Protection: 0   |
+|                                                                        |           |      |        | - Binary-Artifacts: 10   |
+|                                                                        |           |      |        | - Pinned-Dependencies: 0 |
+|                                                                        |           |      |        | - Packaging: -1          |
+|                                                                        |           |      |        | - Security-Policy: 0     |
+|                                                                        |           |      |        | - Fuzzing: 0             |
+|                                                                        |           |      |        | - Vulnerabilities: 10    |
+|                                                                        |           |      |        | - SAST: 0                |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:npm/micromatch@4.0.5                                               | library   | 1027 |      0 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:golang/github.com/youmark/pkcs8@v0.0.0-20240726163527-a2c0da244d78 | library   | 1452 |      0 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+| pkg:pypi/typing-extensions@4.4.0                                       | library   |  213 |      0 |                          |
++------------------------------------------------------------------------+-----------+------+--------+--------------------------+
+```
+
+#### Get All Scorecard Nodes
+
+If we want to find all of the scorecard nodes in our graph, we can run:
+
+```
+go run main.go query globsearch "scorecard*"
+```
+
+We would get something similar to:
+
+```
++-----------------------------------------------------------+-----------+------+--------------------------+
+|                           NAME                            |   TYPE    |  ID  |           INFO           |
++-----------------------------------------------------------+-----------+------+--------------------------+
+| scorecard:pkg:golang/github.com/chromedp/chromedp@v0.10.0 | scorecard | 1602 | Score: 4.20              |
+|                                                           |           |      | Checks:                  |
+|                                                           |           |      | - Code-Review: 4         |
+|                                                           |           |      | - Maintained: 4          |
+|                                                           |           |      | - CII-Best-Practices: 0  |
+|                                                           |           |      | - License: 10            |
+|                                                           |           |      | - Signed-Releases: -1    |
+|                                                           |           |      | - Dangerous-Workflow: 10 |
+|                                                           |           |      | - Token-Permissions: 0   |
+|                                                           |           |      | - Branch-Protection: 0   |
+|                                                           |           |      | - Binary-Artifacts: 10   |
+|                                                           |           |      | - Pinned-Dependencies: 0 |
+|                                                           |           |      | - Packaging: -1          |
+|                                                           |           |      | - Security-Policy: 0     |
+|                                                           |           |      | - Fuzzing: 0             |
+|                                                           |           |      | - Vulnerabilities: 10    |
+|                                                           |           |      | - SAST: 0                |
++-----------------------------------------------------------+-----------+------+--------------------------+
+| scorecard:pkg:golang/github.com/stretchr/testify@v1.9.0   | scorecard | 1601 | Score: 5.90              |
+|                                                           |           |      | Checks:                  |
+|                                                           |           |      | - Maintained: 10         |
+|                                                           |           |      | - Code-Review: 10        |
+|                                                           |           |      | - CII-Best-Practices: 0  |
+|                                                           |           |      | - License: 10            |
+|                                                           |           |      | - Signed-Releases: -1    |
+|                                                           |           |      | - Branch-Protection: -1  |
+|                                                           |           |      | - Packaging: -1          |
+|                                                           |           |      | - Dangerous-Workflow: 10 |
+|                                                           |           |      | - Binary-Artifacts: 10   |
+|                                                           |           |      | - Token-Permissions: 0   |
+|                                                           |           |      | - Pinned-Dependencies: 0 |
+|                                                           |           |      | - Security-Policy: 0     |
+|                                                           |           |      | - Fuzzing: 0             |
+|                                                           |           |      | - SAST: 0                |
+|                                                           |           |      | - Vulnerabilities: 10    |
++-----------------------------------------------------------+-----------+------+--------------------------+
+```
+
+#### Query Specific Metadata for a Scorecard Node:
+
+If we want to get all the scorecard data for `pkg:golang/github.com/stretchr/testify@v1.9.0` we can do:
+
+```bash
+go run main.go query get-metadata "scorecard:pkg:golang/github.com/stretchr/testify@v1.9.0"
+```
+
+This should output something similar to:
+
+```
+{
+  "name": "scorecard:pkg:golang/github.com/stretchr/testify@v1.9.0",
+  "type": "scorecard",
+  "id": "1601",
+  "metadata": {
+    "github_url": "https://github.com/stretchr/testify",
+    "purl": "pkg:golang/github.com/stretchr/testify@v1.9.0",
+    "scorecard": {
+      "Checks": [
+        {
+          "Name": "Code-Review",
+          "Reason": "all changesets reviewed",
+          "Score": 10
+        },
+        {
+          "Name": "Maintained",
+          "Reason": "29 commit(s) and 24 issue activity found in the last 90 days -- score normalized to 10",
+          "Score": 10
+        },
+        {
+          "Name": "CII-Best-Practices",
+          "Reason": "no effort to earn an OpenSSF best practices badge detected",
+          "Score": 0
+        },
+        {
+          "Name": "License",
+          "Reason": "license file detected",
+          "Score": 10
+        },
+        {
+          "Name": "Signed-Releases",
+          "Reason": "no releases found",
+          "Score": -1
+        },
+        {
+          "Name": "Packaging",
+          "Reason": "packaging workflow not detected",
+          "Score": -1
+        },
+        {
+          "Name": "Dangerous-Workflow",
+          "Reason": "no dangerous workflow patterns detected",
+          "Score": 10
+        },
+        {
+          "Name": "Binary-Artifacts",
+          "Reason": "no binaries found in the repo",
+          "Score": 10
+        },
+        {
+          "Name": "Token-Permissions",
+          "Reason": "detected GitHub workflow tokens with excessive permissions",
+          "Score": 0
+        },
+        {
+          "Name": "Pinned-Dependencies",
+          "Reason": "dependency not pinned by hash detected -- score normalized to 0",
+          "Score": 0
+        },
+        {
+          "Name": "Branch-Protection",
+          "Reason": "internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration",
+          "Score": -1
+        },
+        {
+          "Name": "Fuzzing",
+          "Reason": "project is not fuzzed",
+          "Score": 0
+        },
+        {
+          "Name": "Security-Policy",
+          "Reason": "security policy file not detected",
+          "Score": 0
+        },
+        {
+          "Name": "SAST",
+          "Reason": "SAST tool is not run on all commits -- score normalized to 0",
+          "Score": 0
+        },
+        {
+          "Name": "Vulnerabilities",
+          "Reason": "0 existing vulnerabilities detected",
+          "Score": 10
+        }
+      ],
+      "date": "2024-10-14",
+      "purl": "pkg:golang/github.com/stretchr/testify@v1.9.0",
+      "repo": {
+        "commit": "a012e45d185128fe5bf3370e42b0854856e0998e",
+        "name": "github.com/stretchr/testify"
+      },
+      "score": 5.9,
+      "scorecard": {
+        "commit": "28db9a99a4c2e43e1f90a5afed6753e6ef2c36d3",
+        "version": "v5.0.0-68-g28db9a99"
+      }
+    },
+    "success": true
+  }
+}
+
+```
+
+## Conclusion
+
+By integrating OpenSSF Scorecard data into our graph in a fully air-gapped environment, we enhance the security analysis capabilities of our project while maintaining strict security protocols. The process involves loading pre-downloaded Scorecard data, graphing it to establish relationships within the graph, caching the graph, and utilizing the data for security insights.

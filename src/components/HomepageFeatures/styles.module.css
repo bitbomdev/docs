@@ -5,19 +5,22 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.iconHeight {
+  height: 128px;
 }
 
-.sectionHeader {
-  font-size: 2rem; /* Increase the font size for section headers */
-  font-weight: bold;
-  margin-bottom: 1rem;
+.iconBorder {
+  position: relative;
+  padding: 2rem;
 }
 
-.featureHeader {
-  font-size: 1.5rem; /* Slightly decrease the font size for feature headers */
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.iconBorder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 3px solid transparent;
+  background: linear-gradient(to right, var(--theme-dark-blue), var(--theme-cyan)) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }

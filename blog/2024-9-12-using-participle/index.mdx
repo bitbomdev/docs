@@ -1,0 +1,134 @@
+---
+slug: using-participle
+title: Why We Use Participle?
+description: Learn why we chose Participle and Roaring Bitmaps over GraphQL for our project.
+authors: [ NeilNaveen, NaveenSrinivasan ]
+tags: [ Participle, Roaring Bitmaps, GraphQL, SBOM, dependency graphs, Minefield ]
+image: "/img/blog/using-participle/participle-graph.png"
+---
+
+![caged-floating-island](/img/blog/using-participle/participle-graph.png)
+
+We chose Participle and Roaring Bitmaps over GraphQL. Here's why.
+
+<!-- truncate -->
+
+---
+
+**TLDR:** We had to make a crucial decision when developing **Minefield**, our tool for analyzing Software Bill of Materials (SBOMs) and their dependency graphs. Initially, we considered using **GraphQL** to query the intricate relationships between dependencies, dependents, and other relationships. However, as we delved deeper, it became evident that GraphQL wasn’t the ideal solution for our requirements, which included efficient, expressive, and high-performance querying on large, complex datasets.
+That’s when we opted to create a **custom Domain-Specific Language (DSL)** using **Participle**, a parsing library in Golang, and to enhance its performance, we backed it with **Roaring Bitmaps**.
+
+In this article, we will explore the reasons behind this decision and explain how it can help you tackle complex querying problems in your projects.
+
+--- 
+
+## The Attraction of GraphQL:
+
+Our Initial Consideration is GraphQL, a formidable tool that offers flexibility, is driven by schemas, and is widely adopted in the development community. Initially, it appeared to be the perfect fit for querying Minefield’s dependency graphs.
+It allowed us to:
+- **Retrieve only the necessary data**, thereby reducing over-fetching commonly found in REST APIs.
+- **Utilize a robust schema**, which defines the structure of the data, making it simple to work with and validate queries.
+- **Leverage a vast ecosystem** equipped with tools for clients, servers, and documentation.
+
+Nevertheless, as we started experimenting, we encountered critical obstacles that led us to reconsider using GraphQL as a solution for querying SBOMs.
+
+
+## Why GraphQL Fell Short for Complex Dependency Graphs
+
+1. **Nested Relationships are Cumbersome**  
+   Dependency graphs are often deeply nested. You have to track which packages a library depends on and the entire chain of dependencies that follow. Writing deeply nested queries in GraphQL quickly became unwieldy and hard to manage.
+
+2. **Complex Set-Based Operations**  
+   GraphQL is great for fetching specific pieces of data, but it wasn't designed for complex set-based operations like intersections, unions, or complements. When dealing with millions of dependencies, performing these operations is crucial for answering questions like "Which dependencies are affected by this vulnerability but not by others?"
+
+3. **Performance Bottlenecks**  
+   As the dataset grew, performance became a concern. Querying large, complex graphs using GraphQL created a lot of overhead that slowed execution, especially when we needed to perform set-based operations on large lists of dependencies and vulnerabilities.
+
+---
+
+We recognized the need for a tailored solution to query complex dependency graphs efficiently.
+
+To address this, we developed a **custom DSL** using **Participle**, a Golang parsing library that enabled us to define our own query language grammar with ease.
+
+Our DSL empowers us to construct potent, expressive queries that are simple to compose and execute efficiently.
+
+For instance, consider this straightforward example: ```dsl (dependencies library pkg:golang/net and not (dependents library pkg:golang/example)) ```
+This query identifies all libraries dependent on `golang/net` but not relied upon by `golang/example`.
+
+Expressing such nuanced queries clearly in GraphQL was challenging, but our DSL effortlessly managed this task.
+### Why Participle?
+
+1. **Native to Go**  
+   We wanted something that felt natural for Go developers. We defined our query language with Participle using Go structs, making the DSL intuitive and type-safe.
+
+   Example grammar definition:
+   ```go
+   type Expression struct {
+       Left     Term   @@
+       Operator string @("and" | "or" | "xor")?
+       Right    *Expression @@?
+   }
+   ```
+
+2. **Strong Typing**  
+   Leveraging Go's type system allowed us to create a robust DSL that's easy to extend and maintain. Adding new query operators or types is as simple as defining new Go structs and adding them to the parser.
+
+3. **Extensibility and Performance**  
+   Since we controlled the language's design, we could optimize it for exactly what we needed. With Participle, building a DSL that supports nested queries, conditional logic, and complex operations like set intersections was easy.
+
+---
+
+## Roaring Bitmaps: Supercharging Query Performance
+
+Once Participle parses the queries, we apply them using Roaring Bitmaps, a data structure specifically designed for fast set operations. This was a key advantage over GraphQL, which doesn't natively support efficient set-based operations.
+
+### Why Roaring Bitmaps?
+
+Roaring Bitmaps are perfect for **large-scale datasets** like dependency graphs. They allow us to perform operations like **AND**, **OR**, and **XOR** on massive lists of dependencies in milliseconds, without sacrificing memory efficiency.
+
+Here's how we evaluate a parsed query using Roaring Bitmaps:
+
+```go
+func evaluateExpression(expr *Expression) *roaring.Bitmap {
+    left := evaluateTerm(expr.Left)
+    if expr.Operator == nil {
+        return left
+    }
+    right := evaluateExpression(expr.Right)
+    switch *expr.Operator {
+    case "and":
+        return roaring.And(left, right)
+    case "or":
+        return roaring.Or(left, right)
+    case "xor":
+        return roaring.Xor(left, right)
+    }
+    return nil
+}
+```
+
+This allows us to calculate query results quickly and efficiently, even when dealing with millions of dependencies and vulnerabilities.
+
+---
+
+## Real-World Use Case: Vulnerability Analysis at Scale
+
+Here’s an example of a real-world query you can run in Minefield using our DSL:
+
+```dsl
+(dependents vulns CVE-2023-12345 and not dependencies library pkg:golang/patchedlib)
+```
+
+This query finds all dependents affected by a vulnerability (`CVE-2023-12345`) that haven’t yet patched the issue by using a specific library (`golang/patchedlib`).
+
+In a GraphQL world, expressing this kind of query would be cumbersome, and executing it would be slow due to the overhead of navigating through layers of nested data. With our custom DSL and Roaring Bitmaps, however, it runs quickly—even on large datasets.
+
+---
+
+## Conclusion: Choosing the Right Tool for the Job
+
+GraphQL is an incredibly useful tool for many use cases, but it wasn’t the right fit for Minefield’s complex dependency graph queries. By using **Participle** to build a custom DSL and **Roaring Bitmaps** to optimize query performance, we created a solution that’s both **expressive** and **blazingly fast**.
+
+The takeaway? Always choose the right tool for the problem you’re solving. When you need something more tailored, building a custom solution can save you a lot of headaches down the road—especially when working with large, complex datasets.
+
+If you’re interested in digging deeper into how we built Minefield’s custom DSL or have your own experiences with dependency analysis, check out our [GitHub repository](https://github.com/bitbomdev/minefield) and let us know what you think!

@@ -1,11 +1,14 @@
-import { themes as prismThemes } from 'prism-react-renderer';
-import type { Config } from '@docusaurus/types';
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type {Options as IdealImageOptions} from '@docusaurus/plugin-ideal-image';
 import type * as Preset from '@docusaurus/preset-classic';
+import {EnumChangefreq} from 'sitemap';
 
 const config: Config = {
-  title: 'bitbom',
-  tagline: '',
-  favicon: 'img/bitbom-favicon.ico',
+  title: 'Bitbom',
+  tagline: 'High-Performance SBOM Analysis Tools',
+  favicon: 'img/favicon.png',
+  trailingSlash: true,
 
   // Set the production url of your site here
   url: 'https://bitbom.dev',
@@ -15,10 +18,10 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  //organizationName: 'bitbomdev', // Usually your GitHub org/user name.
-  //projectName: 'docs', // Usually your repo name.
+  organizationName: 'bitbomdev', // Usually your GitHub org/user name.
+  projectName: 'minefield', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -28,35 +31,68 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  plugins: [
+    // 'docusaurus-plugin-matomo',
+    '@docusaurus/theme-mermaid',
+    [
+      './custom-blog-plugin',
+      {
+        id: 'blog',
+        routeBasePath: 'blog',
+        path: './blog',
+      },
+    ],
+    [
+      '@docusaurus/plugin-ideal-image',
+      /** @type {import("@docusaurus/plugin-ideal-image").PluginOptions} */
+      {
+        quality: 70,
+        max: 1030, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      } satisfies IdealImageOptions,
+    ],
+    [
+      'content-docs',
+      {
+        id: 'demos',
+        path: 'demos',
+        routeBasePath: 'demos',
+        editCurrentVersion: true,
+        sidebarPath: './sidebar-demos.ts',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
+        editUrl: 'https://github.com/bitbomdev/docs/tree/main/',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'glossary',
+        path: 'glossary',
+        routeBasePath: 'glossary',
+        sidebarPath: './sidebar-glossary.ts',
+      },
+    ],
+  ],
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: 'https://github.com/bitbomdev/docs/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/custom.css'],
+        },
+        sitemap: {
+          changefreq: EnumChangefreq.DAILY,
+          priority: 1,
+          ignorePatterns: ['/blog/archive', '/blog/tags', '/blog/tags/**'],
+          filename: 'sitemap.xml',
         },
         gtag: {
           trackingID: 'G-36YSGXLQZ7', // Your Google Analytics tracking ID
@@ -65,52 +101,74 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  markdown: {
+    mermaid: true,
+  },
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'dark',
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
+    },
+    announcementBar: {
+      id: 'announcementBar-1', // Increment on change
+      /* x-release-please-start-version */
+      content: `🎉 We just released <a href="https://github.com/bitbomdev/minefield" target="_blank">Minefield</a> 🎉`,
+      /* x-release-please-end */
+      isCloseable: true,
+    },
     navbar: {
+      title: 'BitBom',
       logo: {
         alt: 'BitBom Logo',
-        src: 'img/bitbom-long-logo.png',
+        src: 'img/bitbomLogoBig.png',
       },
       items: [
+        
+        {type: 'docSidebar', sidebarId: 'docs', label: 'Docs', position: 'left'},
+        {to: '/demos/starting-up-minefield', label: 'Demos', position: 'left'},
+        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/glossary', label: 'Glossary', position: 'left'},
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
-        { to: '/blog', label: 'Blog', position: 'left' },
-        {
-          href: 'https://github.com/bitbomdev/minefield',
-          label: 'GitHub',
+          type: 'custom-wrapper',
           position: 'right',
         },
       ],
-      // style: 'primary', // Add this line to set the navbar style
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Projects',
+          title: 'Docs',
           items: [
             {
-              label: 'minefield',
+              label: 'Getting started',
+              to: '/docs/#getting-started',
+            },
+            {
+              label: 'Architecture',
+              to: '/docs/getting-started/',
+            },
+            {
+              label: 'Minefield Paper',
+              to: '/docs/minefield-paper',
+            }
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            // {
+            //   label: 'Discord',
+            //   href: 'https://discord.gg/SxH6KUCGH7',
+            // },
+            {
+              label: 'GitHub',
               href: 'https://github.com/bitbomdev/minefield',
-            },
-            {
-              label: 'bom-silo',
-              href: 'https://github.com/bitbomdev/bom-silo',
-            },
-            {
-              label: 'bomfactory',
-              href: 'https://github.com/bitbomdev/bomfactory',
-            },
-            {
-              label: 'docs',
-              href: 'https://github.com/bitbomdev/docs',
             },
           ],
         },
@@ -122,18 +180,32 @@ const config: Config = {
               to: '/blog',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/bitbomdev',
+              label: 'Roadmap',
+              to: '/roadmap',
             },
+            // {
+            //   label: 'Talk to founders',
+            //   href: 'https://cal.glasskube.eu/team/founder/30min',
+            // },
+            // {
+            //   label: 'Signup for the wait list',
+            //   href: 'https://glasskube.cloud/',
+            // },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} bitbom.dev`,
+      copyright: `<img src="/img/bitbom-long-white-logo.png" class="footer-logo"/><br>Copyright © ${new Date().getFullYear()} bitbomdev, Inc.<br>Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    // matomo: {
+    //   matomoUrl: 'https://a.glasskube.eu/',
+    //   siteId: '5',
+    //   phpLoader: 'matomo.php',
+    //   jsLoader: 'matomo.js',
+    // },
   } satisfies Preset.ThemeConfig,
 };
 

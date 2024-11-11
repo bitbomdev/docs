@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9dc87da5-c38a-47f0-b02b-a56e86326f81" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/docs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierrc.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/2024-10-12-Can-Minefield's-Air-Gapped-SBOM-Graph-Function-Like-Git's-Disconnected-Mode/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/2024-10-25-Isolating-and-Fixing-Vulnerabilities-in-an-Air-Gapped-Environment/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom-blog-plugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demos/01_startup.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demos/02_ingsting-scorecard/02_ingesting-scorecard.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/getting-started.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/minefield-cli.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/minefield-paper.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eslint.config.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glossary/01_what-is-an-SBOM.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glossary/02_roaring-bitmaps.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sidebar-demos.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sidebar-glossary.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Home/index.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomepageBlogs/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomepageBlogs/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomepageProducts/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomepageProducts/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomepageTestimonials/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HomepageTestimonials/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ShareThoughts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/CustomGitHubButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/SignupForWaitlistButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/buttons/ViewOnGitHubButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/glossary/_components/GlossaryItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/glossary/_components/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/glossary/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/roadmap.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/telemetry.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/partials/_installMinefield.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/partials/_installScorecardCollector.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/partials/_upgrade.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogLayout/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogListPage/StructuredData/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogListPage/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Container/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Content/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Footer/ReadMoreLink/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Footer/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Author/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Authors/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Authors/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Info/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Info/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Title/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/Title/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/Header/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItem/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItems/LatestBlogPostItem/LatestBlogPostItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItems/LatestBlogPostItem/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItems/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostItems/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogPostPaginator/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/BlogSidebar/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/DocItem/Footer/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/GlossaryPage/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/GlossaryPage/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/NavbarItem/ComponentTypes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/NavbarItem/NavbarWrapper/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme/NavbarItem/NavbarWrapper/styles.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/jsUtils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/animations/home.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/animations/vulnIngestion.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/cast/634355.cast" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/Bitbom-long-white-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/bitbomLogoBig.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/air-gapped-sbom-vuln-graphing-like-git-disconnected-mode/caged-floating-island.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/air-gapped-vulnerabilities/air-gapped-vulnerabilities.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/blog/using-participle/participle-graph.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/demos/ingesting-scorecard/process-overview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/release.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/schemas/v1/index.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/schemas/v1/package-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/schemas/v1/versions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/2024-9-12-Using-Participle/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog/2024-9-12-using-participle/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/authors.yml" beforeDir="false" afterPath="$PROJECT_DIR$/blog/authors.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/tags.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/minefield-cli/_category_.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/minefield-cli/usage.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/minefield-paper/_category_.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/minefield-paper/minefield-paper.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidebars.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomepageFeatures/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomepageFeatures/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomepageFeatures/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomepageFeatures/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/markdown-page.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/bitbom-favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/bitbom-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/docusaurus-social-card.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/docusaurus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/undraw_docusaurus_mountain.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/undraw_docusaurus_react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/undraw_docusaurus_tree.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../pkg/mod/golang.org/toolchain@v0.0.1-go1.22.6.darwin-arm64" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lZ6J7GRGx3M6WMlwJFnlXbQvc2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "nathan/newTheme2",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/nathannaveen/go/src/github.com/nathannaveen/docs/static/img/blogImages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.clear.executor": "Run",
+    "npm.start.executor": "Run",
+    "ts.external.directory.path": "/Users/nathannaveen/go/src/github.com/nathannaveen/docs/node_modules/typescript/lib"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img/blogImages" />
+      <recent name="$PROJECT_DIR$/static/img" />
+      <recent name="$PROJECT_DIR$/blog" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/animations" />
+      <recent name="$PROJECT_DIR$/static/img/blogImages" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/static/img" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="clear" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="clear" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.clear" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-33c477a475b1-e0158606a674-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-241.18034.61" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-GO-241.18034.61" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
