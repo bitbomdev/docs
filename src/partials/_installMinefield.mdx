@@ -1,0 +1,30 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="installation-method">
+  <TabItem value="git" label="Git">
+    ```bash
+    git clone git@github.com:bitbomdev/minefield.git
+    cd minefield
+    go build -o minefield main.go
+    ```
+  </TabItem>
+  <TabItem value="github-cli" label="GitHub CLI">
+    ```bash
+    gh repo clone bitbomdev/minefield
+    cd minefield
+    go build -o minefield main.go
+    ```
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+    ```bash
+    docker pull ghcr.io/bitbomdev/minefield:latest
+    docker run -it ghcr.io/bitbomdev/minefield:latest
+    ```
+  </TabItem>
+  <TabItem value="go" label="Go Install">
+    ```bash
+    go get github.com/bitbomdev/minefield
+    ```
+  </TabItem>
+</Tabs>

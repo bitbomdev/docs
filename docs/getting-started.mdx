@@ -1,0 +1,20 @@
+import Install from '../src/partials/_installMinefield.mdx';
+import InstallScorecardCollector from '../src/partials/_installScorecardCollector.mdx';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+The installation consists of two main components:
+- **Minefield**: The core engine that graphs and analyzes Software Bill of Materials (SBOM) data
+- **Scorecard Downloader**: A tool to fetch OpenSSF Scorecard data for GitHub repositories (optional)
+
+## Installing Minefield
+
+<Install/>
+
+## Installing Scorecard Downloader (Optional)
+
+The Scorecard Downloader helps fetch security metrics data that can be ingested into Minefield. You can skip this step if you have your own data source.
+
+<InstallScorecardCollector/>

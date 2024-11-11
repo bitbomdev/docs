@@ -2,10 +2,12 @@
 slug: isolating-and-fixing-vulnerabilities-in-an-air-gapped-environment
 title: Isolating and Fixing Vulnerabilities in an Air-Gapped Environment
 description: How we isolated and fixed vulnerabilities in an air-gapped environment
-keywords: [SBOM, dependency graphs, air-gapped, vulnerabilities]
 authors: [BitBom]
 tags: [air-gapped, vulnerabilities]
+image: "/img/blog/air-gapped-vulnerabilities/air-gapped-vulnerabilities.png"
 ---
+
+![caged-floating-island](/img/blog/air-gapped-vulnerabilities/air-gapped-vulnerabilities.png)
 
 Isolating and Identifying Critical Vulnerabilities in under 5 minutes (coffee break ;))
 

@@ -2,10 +2,12 @@
 slug: Air-Gapped-Vulnerability
 title: How Minefield Enables Air-Gapped SBOM Vulnerability Graphing Like Git's Disconnected Mode
 description: How Minefield Graphed Vulnerabilities in an Air-Gapped Environment
-keywords: [SBOM, dependency graphs, air-gapped, vulnerabilities]
 authors: [BitBom]
 tags: [air-gapped, vulnerabilities]
+image: "/img/blog/air-gapped-sbom-vuln-graphing-like-git-disconnected-mode/caged-floating-island.png"
 ---
+
+![caged-floating-island](/img/blog/air-gapped-sbom-vuln-graphing-like-git-disconnected-mode/caged-floating-island.png)
 
 Graphing vulnerabilities in an air-gapped environment is considered impossible, and we did it. Here's how.
 
@@ -34,6 +36,7 @@ Minefield's speed and efficiency come from using Roaring Bitmaps and a direct no
 **Caching with Pre-Computed Queries:** Minefield caches dependents and dependencies to enhance performance, allowing for O(1) query times. This is critical for maintaining speed in an air-gapped environment.
 
 [![](https://mermaid.ink/img/pako:eNptkTtvhDAMx79K5PlQd4ZKPK6o0tEbaG8odDAXA5EgQXkM1em-e0NoBWrryf7b-cWPG1wVJ4ih1zgP7DVvJPNmXLsKb4b0Ki2W1Ofqwjha_NjEtK7Sc2m-FZL8F6KBROiowHkmzkohqRM08gY2QlY_y56MZbknP1zcKEljK0ZhBRnWaTWFPnZ_ZiyKHllenxRyJqRV4WmLhnZFm3esi9DKH7TS7MXPb3av8oA-_osJqae6oIViiZ0IOelWoeb78Vc3CdXZGqQ_ARxgIj2h4H7ptyXZgB1oogZi73Lq0I122c7dl6KzqvqUV4itdnQAN_vlUy7Qr3aCuMPReHVG-a7UFhMXVulyPWy47wG0cv2wYu5f4KWXlw?type=png)](https://mermaid.live/edit#pako:eNptkTtvhDAMx79K5PlQd4ZKPK6o0tEbaG8odDAXA5EgQXkM1em-e0NoBWrryf7b-cWPG1wVJ4ih1zgP7DVvJPNmXLsKb4b0Ki2W1Ofqwjha_NjEtK7Sc2m-FZL8F6KBROiowHkmzkohqRM08gY2QlY_y56MZbknP1zcKEljK0ZhBRnWaTWFPnZ_ZiyKHllenxRyJqRV4WmLhnZFm3esi9DKH7TS7MXPb3av8oA-_osJqae6oIViiZ0IOelWoeb78Vc3CdXZGqQ_ARxgIj2h4H7ptyXZgB1oogZi73Lq0I122c7dl6KzqvqUV4itdnQAN_vlUy7Qr3aCuMPReHVG-a7UFhMXVulyPWy47wG0cv2wYu5f4KWXlw)
+
 Minefield takes a user-centric approach to vulnerability ingestion, allowing users to process data without Minefield relying on external databases, much like how Git operates offline with local repositories.
 
 Minefield's graphing capabilities are highly optimized for performance, ensuring it can quickly handle complex vulnerability data, even in an air-gapped setup. The data must conform to the OSV (Open Source Vulnerability) schema, a widely recognized standard that promotes consistency and reliability across different data sources.
@@ -83,4 +86,3 @@ By focusing on an air-gapped design, Minefield offers Git-like control over vuln
 With evolving security threats, Minefield offers a reliable solution for managing vulnerabilities in air-gapped environments. It's perfect for organizations needing strong security and complete data control.
 
 To learn more about how we ingest vulnerabilities offline and to get a more hands-on experience, visit our [GitHub repository](https://github.com/bitbomdev/minefield) to get started.
-

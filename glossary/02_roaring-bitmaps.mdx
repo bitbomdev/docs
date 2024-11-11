@@ -1,0 +1,57 @@
+---
+title: Roaring Bitmaps
+slug: roaring-bitmaps
+description: 'Understanding the Roaring Bitmaps data structure and how it works'
+---
+
+[Roaring bitmaps](https://roaringbitmap.org/) are a highly efficient data structure for storing and processing sets of 32-bit integers, offering exceptional compression while maintaining fast operation speeds. They have become the go-to solution for many high-performance systems including Youtube, Microsoft, Netflix, and many others.
+
+## Key Benefits
+
+- Can be hundreds of times faster than traditional compressed bitmaps
+- Significantly better compression ratios
+- Maintains fast operations despite compression
+- Used by major tech companies and databases worldwide
+
+## Performance Characteristics
+
+### Speed
+- Fast set operations (AND, OR, XOR) through optimized algorithms
+- Quick element lookup through binary search or direct bitmap access
+- Container-level operations can skip empty ranges
+- Maintains high performance even with large datasets
+
+### Space Efficiency
+- Real-world example: Reduced memory usage from 125GB to 300MB in one case
+- Adapts storage strategy based on data density
+- No significant speed penalty for compression
+- Dynamic container conversion based on cardinality
+
+## Limitations
+
+Roaring bitmaps, are extremely efficient, and "Roaring bitmaps are designed to store sets of 32-bit (unsigned) integers. Thus a Roaring bitmap can contain up to **4294967296** integers." ([Roaring Bitmap Spec](https://github.com/RoaringBitmap/RoaringFormatSpec?tab=readme-ov-file#standard-32-bit-roaring-bitmap))
+
+That means that they are able to store **more than 4 billion integers in a single bitmap**.
+
+1. **32-bit Integer Restriction**
+   - Designed specifically for 32-bit unsigned integers
+   - Requires mapping other data types to this range
+
+2. **Memory Overhead**
+   - Small overhead from container management
+   - May not be optimal for very small sets
+
+3. **Uniform Distribution**
+   - Less effective compression for uniformly distributed data
+   - Traditional bitsets might be better for small, dense sets
+
+## Best Use Cases
+
+Roaring bitmaps excel in:
+- Search engines and databases
+- Large-scale data analytics
+- Systems requiring fast set operations
+- Scenarios with sparse or clustered data
+- Applications needing both space efficiency and speed
+
+Roaring bitmaps represent a significant advancement in bitmap technology, offering an rare combination of both space efficiency and speed, making them an excellent choice for modern high-performance systems dealing with large sets of integers.
