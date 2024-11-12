@@ -194,7 +194,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `<img src="/img/bitbom-long-white-logo.png" class="footer-logo"/><br>Copyright © ${new Date().getFullYear()} bitbomdev, Inc.<br>Built with Docusaurus.`,
+      copyright: `<img src="/img/Bitbom-long-white-logo.png" class="footer-logo"/><br>Copyright © ${new Date().getFullYear()} bitbomdev, Inc.<br>Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
