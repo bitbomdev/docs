@@ -237,7 +237,7 @@ export default function Home({
           recentPosts={recentPosts}
         />
         {/* <HomepageTestimonials /> */}
-        <HomepageNewsletter />
+        {/* <HomepageNewsletter /> */}
       </main>
     </Layout>
   );
