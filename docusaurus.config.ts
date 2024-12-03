@@ -128,11 +128,14 @@ const config: Config = {
         src: 'img/bitbomLogoBig.png',
       },
       items: [
-        
         {type: 'docSidebar', sidebarId: 'docs', label: 'Docs', position: 'left'},
         {to: '/demos/starting-up-minefield', label: 'Demos', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/glossary', label: 'Glossary', position: 'left'},
+        {
+          type: 'search',
+          position: 'left',
+        },
         {
           type: 'custom-wrapper',
           position: 'right',
@@ -206,6 +209,12 @@ const config: Config = {
     //   phpLoader: 'matomo.php',
     //   jsLoader: 'matomo.js',
     // },
+    algolia: {
+      appId: 'XVADXTT1S0',
+      apiKey: 'dd44c26b3affe3e878fa9469701eb849', // search only API key
+      indexName: 'bitbom',
+      contextualSearch: true,
+    },
   } satisfies Preset.ThemeConfig,
 };
 
