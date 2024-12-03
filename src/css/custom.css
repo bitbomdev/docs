@@ -54,6 +54,8 @@
   --theme-lightest-cyan: #ADE8F4;
   --theme-palest-cyan: #CAF0F8;
   --theme-white: #FFFFFF;
+
+  --search-bar-background: #EDF2F5;
 }
 
 
@@ -239,4 +241,20 @@ canary-trigger-searchbar::part(kbd) {
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* Customize DocSearch colors */
+.DocSearch {
+  --docsearch-text-color: var(--glasskube-grey-0);
+  --docsearch-muted-color: var(--glasskube-grey-0);
+  --docsearch-container-background: rgba(12, 38, 59, 0.7);
+}
+
+/* Dark mode colors */
+[data-theme='dark'] .DocSearch {
+  --docsearch-text-color: var(--glasskube-main-light);
+  --docsearch-muted-color: var(--glasskube-main-light);
+  --docsearch-container-background: rgba(12, 38, 59, 0.8);
+  --docsearch-modal-background: var(--glasskube-background-dark);
+  --docsearch-searchbox-background: var(--glasskube-background-dark);
 }
