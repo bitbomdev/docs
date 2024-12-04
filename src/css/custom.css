@@ -243,18 +243,23 @@ canary-trigger-searchbar::part(kbd) {
   }
 }
 
-/* Customize DocSearch colors */
-.DocSearch {
+/* Customize DocSearch colors - make selectors more specific */
+.DocSearch-Container .DocSearch {
   --docsearch-text-color: var(--glasskube-grey-0);
   --docsearch-muted-color: var(--glasskube-grey-0);
   --docsearch-container-background: rgba(12, 38, 59, 0.7);
 }
 
 /* Dark mode colors */
-[data-theme='dark'] .DocSearch {
+[data-theme='dark'] .DocSearch-Container .DocSearch {
   --docsearch-text-color: var(--glasskube-main-light);
   --docsearch-muted-color: var(--glasskube-main-light);
   --docsearch-container-background: rgba(12, 38, 59, 0.8);
   --docsearch-modal-background: var(--glasskube-background-dark);
   --docsearch-searchbox-background: var(--glasskube-background-dark);
+}
+
+/* Ensure base text color is properly set for dark mode */
+[data-theme='dark'] {
+  --ifm-font-color-base: var(--glasskube-main-light);
 }
