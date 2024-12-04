@@ -3,7 +3,7 @@ slug: isolating-and-fixing-vulnerabilities-in-an-air-gapped-environment
 title: Isolating and Fixing Vulnerabilities in an Air-Gapped Environment
 description: How we isolated and fixed vulnerabilities in an air-gapped environment
 authors: [BitBom]
-tags: [air-gapped, vulnerabilities]
+tags: [Air-Gapped, Vulnerabilities, Minefield]
 image: "/img/blog/air-gapped-vulnerabilities/air-gapped-vulnerabilities.png"
 ---
 

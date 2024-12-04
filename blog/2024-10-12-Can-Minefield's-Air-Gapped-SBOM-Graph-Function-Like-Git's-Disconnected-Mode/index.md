@@ -3,7 +3,7 @@ slug: Air-Gapped-Vulnerability
 title: How Minefield Enables Air-Gapped SBOM Vulnerability Graphing Like Git's Disconnected Mode
 description: How Minefield Graphed Vulnerabilities in an Air-Gapped Environment
 authors: [BitBom]
-tags: [air-gapped, vulnerabilities]
+tags: [Air-Gapped, Vulnerabilities, Minefield]
 image: "/img/blog/air-gapped-sbom-vuln-graphing-like-git-disconnected-mode/caged-floating-island.png"
 ---
 
