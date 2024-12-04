@@ -2,11 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bitbom.dev/blog/</id>
     <title>Bitbom Blog</title>
-    <updated>2024-10-25T00:00:00.000Z</updated>
+    <updated>2024-12-03T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://bitbom.dev/blog/"/>
     <subtitle>Bitbom Blog</subtitle>
     <icon>https://bitbom.dev/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Introducing Minefield's SQL Storage]]></title>
+        <id>https://bitbom.dev/blog/introducing-sql-storage/</id>
+        <link href="https://bitbom.dev/blog/introducing-sql-storage/"/>
+        <updated>2024-12-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What's new in Minefield's SQL Storage]]></summary>
+        <content type="html"><![CDATA[<p><img decoding="async" loading="lazy" alt="caged-floating-island" src="https://bitbom.dev/assets/images/intro-to-sql-024893103bcef151defd952535224566.png" width="685" height="384" class="img_ev3q"></p>
+<p>Isolating and Identifying Critical Vulnerabilities in under 5 minutes (coffee break ;))</p>
+<hr>
+<p><em>TL;DR</em></p>
+<p><em>Minefield simplifies the process of discovering and addressing vulnerabilities across complex software projects by using fast, bitwise queries and Roaring Bitmaps to analyze Software Bill of Materials (SBOMs) in air-gapped environments. With straightforward commands, you can quickly identify affected packages, assess their impact, prioritize fixes for critical components, and systematically eliminate risks. Soon, an integrated Language Learning Model (LLM) will make writing these queries even easier, enabling more intuitive and efficient security management without compromising on safety.</em></p>
+<p>We are excited to announce that Minefield now supports SQL-based storage solutions, in addition to the existing Redis integration. This enhancement offers users greater flexibility in managing their Software Bill of Materials (SBOM) data, catering to diverse operational needs and preferences.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="understanding-the-storage-options-redis-vs-sql">Understanding the Storage Options: Redis vs. SQL<a href="https://bitbom.dev/blog/introducing-sql-storage/#understanding-the-storage-options-redis-vs-sql" class="hash-link" aria-label="Direct link to Understanding the Storage Options: Redis vs. SQL" title="Direct link to Understanding the Storage Options: Redis vs. SQL">​</a></h2>
+<ul>
+<li><strong>Redis</strong>: A high-performance, in-memory data store known for its speed and efficiency, Redis is ideal for applications requiring rapid data access and real-time analytics.</li>
+<li><strong>SQL Databases</strong>: Traditional relational databases that provide robust data integrity, complex querying capabilities, and persistent storage. Suitable for applications where data consistency and long-term storage are paramount.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="benefits-of-sql-integration-in-minefield">Benefits of SQL Integration in Minefield<a href="https://bitbom.dev/blog/introducing-sql-storage/#benefits-of-sql-integration-in-minefield" class="hash-link" aria-label="Direct link to Benefits of SQL Integration in Minefield" title="Direct link to Benefits of SQL Integration in Minefield">​</a></h2>
+<ol>
+<li><strong>Enhanced Data Persistence</strong>: SQL databases ensure that your SBOM data is stored persistently, safeguarding against data loss even during system restarts or failures.</li>
+<li><strong>Scalability</strong>: SQL databases are well-suited for handling large datasets, making them ideal for enterprises managing extensive SBOM information.</li>
+<li><strong>Data Integrity</strong>: With built-in support for transactions and constraints, SQL databases maintain high levels of data integrity, ensuring the accuracy and reliability of your SBOM data.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="choosing-the-right-storage-solution">Choosing the Right Storage Solution<a href="https://bitbom.dev/blog/introducing-sql-storage/#choosing-the-right-storage-solution" class="hash-link" aria-label="Direct link to Choosing the Right Storage Solution" title="Direct link to Choosing the Right Storage Solution">​</a></h2>
+<p>The addition of SQL support allows Minefield users to select the storage solution that best aligns with their specific requirements:</p>
+<ul>
+<li>Opt for <strong>Redis</strong> when speed and real-time data access are critical.</li>
+<li>Choose <strong>SQL</strong> for scenarios where data persistence and integrity are essential.</li>
+</ul>
+<p>This flexibility ensures Minefield can adapt to various operational contexts, providing a tailored experience for every user.</p>
+<p>We encourage you to explore this new feature and determine how it can enhance your SBOM management processes. As always, we welcome your feedback and look forward to improving Minefield to meet your evolving needs.</p>]]></content>
+        <author>
+            <name>BitBom</name>
+            <uri>https://github.com/bitbom</uri>
+        </author>
+        <category label="SQL" term="SQL"/>
+        <category label="Minefield" term="Minefield"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Isolating and Fixing Vulnerabilities in an Air-Gapped Environment]]></title>
         <id>https://bitbom.dev/blog/isolating-and-fixing-vulnerabilities-in-an-air-gapped-environment/</id>
@@ -98,8 +136,9 @@
             <name>BitBom</name>
             <uri>https://github.com/bitbom</uri>
         </author>
-        <category label="air-gapped" term="air-gapped"/>
-        <category label="vulnerabilities" term="vulnerabilities"/>
+        <category label="Air-Gapped" term="Air-Gapped"/>
+        <category label="Vulnerabilities" term="Vulnerabilities"/>
+        <category label="Minefield" term="Minefield"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[How Minefield Enables Air-Gapped SBOM Vulnerability Graphing Like Git's Disconnected Mode]]></title>
@@ -144,8 +183,9 @@
             <name>BitBom</name>
             <uri>https://github.com/bitbom</uri>
         </author>
-        <category label="air-gapped" term="air-gapped"/>
-        <category label="vulnerabilities" term="vulnerabilities"/>
+        <category label="Air-Gapped" term="Air-Gapped"/>
+        <category label="Vulnerabilities" term="Vulnerabilities"/>
+        <category label="Minefield" term="Minefield"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Why We Use Participle?]]></title>
