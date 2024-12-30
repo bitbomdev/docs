@@ -40,7 +40,12 @@ git clone git@github.com:bitbomdev/minefield.git
 cd minefield
 ```
 
-2. Ingest your SBOM data:
+2. Start the service:
+```bash
+go run main.go start-service
+```
+
+3. Ingest your SBOM data:
 ```bash
 go run main.go ingest sbom <sbom_file or sbom_dir>
 ```
@@ -64,12 +69,6 @@ go run main.go query custom "dependents library pkg:redis@6.2.0"
 
 # Analyze shared dependencies
 go run main.go query custom "dependencies library pkg:lib-A@1.0.0 and dependencies library pkg:lib-B@1.0.0"
-```
-
-### Visual Analysis
-```bash
-# Generate dependency visualizations
-go run main.go query custom "dependents library pkg:dep2@1.0.0" --visualize
 ```
 
 ### Leaderboard Analytics
