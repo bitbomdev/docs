@@ -62,31 +62,23 @@ The integration of Scorecard data into the graph involves several steps:
 First load some SBOM data into the graph, we can use some test data:
 
 ```bash
-go run main.go ingest sbom testdata/sboms
+minefield ingest sbom testdata/sboms
 ```
 
 ### 2. Load Scorecard Data into the Storage
 
-Then, load the Scorecard data into our storage system using the `load` command. This command processes the JSON files and stores the data for later use.
+Then, load the Scorecard data into our storage system using the `graph` command. This command processes the JSON files and stores the data for later use.
 
 ```bash
-go run main.go ingest scorecard load scorecard_data.json
+minefield ingest scorecard graph scorecard_data.json
 ```
 
-### 3. Graph the Scorecard Data
-
-Next, graph the Scorecard data using the `graph` command. This step integrates the Scorecard data into the graph, establishing relationships between the Scorecard nodes and existing library nodes.
-
-```bash
-go run main.go ingest scorecard graph
-```
-
-### 4. Cache the Graph
+### 3. Cache the Graph
 
 After graphing the data, cache the graph to optimize performance for queries and analyses.
 
 ```bash
-go run main.go cache
+minefield cache
 ```
 
 ### 5. Utilize the Scorecard Data
@@ -98,7 +90,7 @@ With the Scorecard data integrated into the graph, perform queries to extract va
 If we want to find all nodes that have a scorecard as their dependency, we can create a leaderboard of the nodes based on the number of dependencies of type scorecard:
 
 ```bash
-go run main.go leaderboard custom "dependencies scorecard"
+minefield leaderboard custom "dependencies scorecard"
 ```
 
 you should get something similar to:

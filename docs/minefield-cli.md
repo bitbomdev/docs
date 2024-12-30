@@ -97,19 +97,10 @@ Flags:
 
 Ingests SBOM data into the graph.
 
-### `minefield ingest osv load <file_or_directory>`
+### `minefield ingest osv ingest <file_or_directory>`
 
-Loads [OSV](https://google.github.io/osv.dev/data/#data-dumps) data into local database. Accepts JSON files, directories, or zip files.
-
-### `minefield ingest osv graph`
-
-Loads [OSV](https://google.github.io/osv.dev/data/#data-dumps) data from local database into the graph.
+Adds the [OSV](https://google.github.io/osv.dev/data/#data-dumps) data into graph. Accepts JSON files, directories, or zip files.
 
 ### `minefield ingest scorecard load <file_or_directory>`
 
-Loads [OpenSSF Scorecard](https://github.com/ossf/scorecard) data into local database. Accepts JSON files, directories, or zip files.
-
-### `minefield ingest scorecard graph`
-
-Loads [OpenSSF Scorecard](https://github.com/ossf/scorecard) data from local database into the graph.
-
+Adds the [OpenSSF Scorecard](https://github.com/ossf/scorecard) data into graph. Accepts JSON files, directories, or zip files.

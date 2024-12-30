@@ -7,9 +7,9 @@ const sidebars: SidebarsConfig = {
       label: 'Glossary',
       link: {
         type: 'generated-index',
-        title: 'Kubernetes Glossary',
+        title: 'Minefield Glossary',
         description:
-          'Learn about common Kubernetes and cloud-native terminology',
+          'Learn more about supply chain security terminology',
         slug: '/categories/glossary',
       },
       items: [
