@@ -95,7 +95,7 @@ const config: Config = {
           filename: 'sitemap.xml',
         },
         gtag: {
-          trackingID: 'G-36YSGXLQZ7', // Your Google Analytics tracking ID
+          trackingID: 'G-M68JR4S54N', // Your Google Analytics tracking ID
           anonymizeIP: true, // Anonymize IPs if needed
         },
       } satisfies Preset.Options,
